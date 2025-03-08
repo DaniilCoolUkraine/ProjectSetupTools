@@ -1,6 +1,6 @@
 {
   "name": "com.daniilcoolukraine.projectsetuptools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "displayName": "Project Setup Tools",
   "description": "Package contains references to all default things, that can be useful for developing a Unity project from scratch",
   "author": {

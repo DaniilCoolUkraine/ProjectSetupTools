@@ -85,6 +85,13 @@ namespace ProjectSetupTools.Editor
             content.tooltip = mainComponentType.Name;
             
             if (content.image == null)
+            {
+                MonoScript script = MonoScript.FromScriptableObject(ScriptableObject.CreateInstance(mainComponentType)) as MonoScript;
+                if (script != null)
+                    content.image = AssetPreview.GetMiniThumbnail(script);
+            }
+            
+            if (content.image == null)
                 return;
             EditorGUI.LabelField(selectionRect, content);
         }
@@ -95,7 +102,7 @@ namespace ProjectSetupTools.Editor
             if (components == null || components.Length == 0)
                 return null;
 
-            return (components.Length > 1 ? components[1] : components[0]).GetType();
+            return (components.Length > 1 ? components[1] : components[0])?.GetType();
         }
     }
 }

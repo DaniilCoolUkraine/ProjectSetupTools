@@ -1,3 +1,7 @@
+## [1.0.4] - 2025-03-08
+### Bugfix
+- fixed scripts icons getting vanished
+---
 ## [1.0.3] - 2025-03-07
 ### API changes
 - HierarchyActivationDisplay now HierarchyAdvancedDisplay<br>
