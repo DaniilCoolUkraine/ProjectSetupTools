@@ -5,5 +5,7 @@
   "description": "Package contains references to all default things, that can be useful for developing a Unity project from scratch",
   "author": {
     "name": "DaniilCoolUkraine"
-  }
+  },
+  "changelogUrl": "https://github.com/DaniilCoolUkraine/ProjectSetupTools/blob/main/CHANGELOG.md",
+  "documentationUrl": "https://github.com/DaniilCoolUkraine/ProjectSetupTools/blob/main/README.md"
 }
