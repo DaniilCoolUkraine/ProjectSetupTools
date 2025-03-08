@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProjectSetupTools.Editor
+namespace ProjectSetupTools.Editor.ExtendedHierarchy
 {
     [InitializeOnLoad]
     public static class HierarchyAdvancedDisplay

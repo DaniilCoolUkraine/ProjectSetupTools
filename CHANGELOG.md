@@ -1,3 +1,13 @@
+## [1.0.5] - 2025-03-08
+### API changes
+- HierarchyAdvancedDisplay moved to ExtendedHierarchy namespace<br>
+  For further improvements it will be extracted to its own package in later versions
+### New features
+- Added asset installer<br>
+  Automated installation of [Odin](https://odininspector.com/), [Selection History](https://assetstore.unity.com/packages/tools/utilities/selection-history-184204) and [Zenject](https://assetstore.unity.com/packages/tools/utilities/extenject-dependency-injection-ioc-157735)<br>
+- Added package installer<br>
+  Automated installation of [Favourites](https://github.com/DaniilCoolUkraine/Favourites), [UniTask](https://github.com/Cysharp/UniTask), [SimpleEventBus](https://github.com/DaniilCoolUkraine/SimpleEventBus)
+---
 ## [1.0.4] - 2025-03-08
 ### Bugfix
 - fixed scripts icons getting vanished

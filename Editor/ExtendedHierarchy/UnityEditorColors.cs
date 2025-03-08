@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace ProjectSetupTools.Editor
+namespace ProjectSetupTools.Editor.ExtendedHierarchy
 {
     public static class UnityEditorColors
     {
