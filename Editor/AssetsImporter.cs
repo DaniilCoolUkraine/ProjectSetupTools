@@ -11,7 +11,7 @@ namespace ProjectSetupTools.Editor
 {
     public static class AssetsImporter
     {
-        [MenuItem("Setup Tools/Import Assets")]
+        [MenuItem("SetupTools/Import Assets")]
         public static void ImportAssets()
         {
             Assets.ImportAssets("Odin Inspector 3.3.1.11.unitypackage", "Sirenix/Editor ExtensionSystem");
@@ -20,7 +20,7 @@ namespace ProjectSetupTools.Editor
             Assets.ImportAssets("Better Folders.unitypackage", "gokcin/ScriptingGUI");
         }
 
-        [MenuItem("Setup Tools/Import Packages")]
+        [MenuItem("SetupTools/Import Packages")]
         public static void ImportPackages()
         {
             Packages.InstallPackages(new[]
@@ -32,6 +32,22 @@ namespace ProjectSetupTools.Editor
             });
         }
 
+        [MenuItem("SetupTools/Set Root Namespace")]
+        public static void SetRootNamespace()
+        {
+            string projectName = PlayerSettings.productName.Replace(" ", "");
+
+            if (string.IsNullOrEmpty(projectName))
+            {
+                Debug.LogWarning("Project name is empty. Please set it in PlayerSettings.");
+                return;
+            }
+
+            EditorSettings.projectGenerationRootNamespace = projectName;
+
+            Debug.Log($"Root Namespace set to \"{projectName}\".");
+        }
+        
         public class Assets
         {
             public static void ImportAssets(string asset, string folder)

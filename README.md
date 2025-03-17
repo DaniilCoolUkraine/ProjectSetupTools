@@ -17,3 +17,5 @@ Automatically imports:
 - [Favourites](https://github.com/DaniilCoolUkraine/Favourites)
 - [SimpleEventBus](https://github.com/DaniilCoolUkraine/SimpleEventBus)
 - [ExtendedHierarchy](https://github.com/DaniilCoolUkraine/ExtendedHierarchy)
+### Misc
+- Sets root namespace same as project name
