@@ -1,3 +1,9 @@
+## [1.0.6] - 2025-03-17
+### API changes
+- HierarchyAdvancedDisplay is now separate package
+### New features
+- Asset installer now includes [Better Folders](https://assetstore.unity.com/packages/tools/gui/better-folders-311261) 
+
 ## [1.0.5] - 2025-03-08
 ### API changes
 - HierarchyAdvancedDisplay moved to ExtendedHierarchy namespace<br>

@@ -1,6 +1,6 @@
 {
-    "name": "com.DaniilCoolUkraine.ProjectSetupTools",
-    "rootNamespace": "ProjectSetupTools",
+    "name": "com.DaniilCoolUkraine.ProjectSetupTools.Editor",
+    "rootNamespace": "ProjectSetupTools.Editor",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

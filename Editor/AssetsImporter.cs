@@ -17,6 +17,7 @@ namespace ProjectSetupTools.Editor
             Assets.ImportAssets("Odin Inspector 3.3.1.11.unitypackage", "Sirenix/Editor ExtensionSystem");
             Assets.ImportAssets("Selection History.unitypackage", "Staggart Creations/Editor ExtensionsUtilities");
             Assets.ImportAssets("Extenject Dependency Injection IOC.unitypackage", "Mathijs Bakker/Editor ExtensionsUtilities");
+            Assets.ImportAssets("Better Folders.unitypackage", "gokcin/ScriptingGUI");
         }
 
         [MenuItem("Setup Tools/Import Packages")]
@@ -25,8 +26,9 @@ namespace ProjectSetupTools.Editor
             Packages.InstallPackages(new[]
             {
                 "https://github.com/DaniilCoolUkraine/Favourites.git",
+                "https://github.com/DaniilCoolUkraine/SimpleEventBus.git",
+                "https://github.com/DaniilCoolUkraine/ExtendedHierarchy.git",
                 "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-                "https://github.com/DaniilCoolUkraine/SimpleEventBus.git"
             });
         }
 
