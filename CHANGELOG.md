@@ -1,3 +1,7 @@
+## [1.0.8] - 2025-06-01
+### Bugfix
+- fixed build crash
+---
 ## [1.0.7] - 2025-03-17
 ### New features
 - Now sets root namespace
