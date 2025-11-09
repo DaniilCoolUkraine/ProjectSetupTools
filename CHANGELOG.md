@@ -1,3 +1,7 @@
+## [1.0.9] - 2025-11-09
+### Pacakges update
+- Removed Better Folders from asset installer
+---
 ## [1.0.8] - 2025-06-01
 ### Bugfix
 - fixed build crash

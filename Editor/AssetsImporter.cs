@@ -17,7 +17,6 @@ namespace ProjectSetupTools.Editor
             Assets.ImportAssets("Odin Inspector 3.3.1.11.unitypackage", "Sirenix/Editor ExtensionSystem");
             Assets.ImportAssets("Selection History.unitypackage", "Staggart Creations/Editor ExtensionsUtilities");
             Assets.ImportAssets("Extenject Dependency Injection IOC.unitypackage", "Mathijs Bakker/Editor ExtensionsUtilities");
-            Assets.ImportAssets("Better Folders.unitypackage", "gokcin/ScriptingGUI");
         }
 
         [MenuItem("SetupTools/Import Packages")]
