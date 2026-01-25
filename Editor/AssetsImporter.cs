@@ -28,6 +28,7 @@ namespace ProjectSetupTools.Editor
                 "https://github.com/DaniilCoolUkraine/SimpleEventBus.git",
                 "https://github.com/DaniilCoolUkraine/ExtendedHierarchy.git",
                 "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+                "https://github.com/DaniilCoolUkraine/SimpleStateMachine.git",
             });
         }
 
@@ -86,7 +87,8 @@ namespace ProjectSetupTools.Editor
 
                 if (packagesToInstall.Count > 0)
                 {
-                    await Task.Delay(1000);
+                    await Task.Delay(5000);
+                    while (EditorApplication.isCompiling || EditorApplication.isUpdating) await Task.Delay(10);
                     StartNextPackageInstall();
                 }
             }
