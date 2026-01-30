@@ -1,5 +1,9 @@
+## [1.0.10] - 2026-01-30
+### Bugfix
+- Fixed annoying packages download bug. Now install is no longer interrupts by compilation
+---
 ## [1.0.9] - 2025-11-09
-### Pacakges update
+### Packages update
 - Removed Better Folders from asset installer
 ---
 ## [1.0.8] - 2025-06-01
