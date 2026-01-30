@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
@@ -47,7 +46,7 @@ namespace ProjectSetupTools.Editor
 
             Debug.Log($"Root Namespace set to \"{projectName}\".");
         }
-        
+
         public class Assets
         {
             public static void ImportAssets(string asset, string folder)
@@ -59,38 +58,84 @@ namespace ProjectSetupTools.Editor
             }
         }
 
+        [InitializeOnLoad]
         public class Packages
         {
-            private static AddRequest request;
-            static Queue<string> packagesToInstall = new Queue<string>();
+            private const string QueueKey = "ProjectSetupTools_PackageQueue";
 
-            public static void InstallPackages(string[] packages)
+            private static AddRequest _request;
+            private static Queue<string> _packagesToInstall;
+
+            static Packages()
             {
-                foreach (var package in packages)
-                    packagesToInstall.Enqueue(package);
+                _packagesToInstall = LoadQueue();
 
-                if (packagesToInstall.Count > 0)
+                if (_packagesToInstall.Count > 0)
                 {
-                    StartNextPackageInstall();
+                    EditorApplication.update += OnEditorUpdate;
                 }
             }
 
-            private static async void StartNextPackageInstall()
+            public static void InstallPackages(string[] packages)
             {
-                request = Client.Add(packagesToInstall.Dequeue());
-                while (!request.IsCompleted) await Task.Delay(10);
+                _packagesToInstall = new Queue<string>(packages);
+                SaveQueue();
 
-                if (request.Status == StatusCode.Success)
-                    Debug.Log($"Installed {request.Result.packageId}");
-                else
-                    Debug.LogError($"{request.Error.message}");
+                EditorApplication.update += OnEditorUpdate;
+            }
 
-                if (packagesToInstall.Count > 0)
+            private static void OnEditorUpdate()
+            {
+                if (EditorApplication.isCompiling || EditorApplication.isUpdating)
+                    return;
+
+                if (_request != null)
                 {
-                    await Task.Delay(5000);
-                    while (EditorApplication.isCompiling || EditorApplication.isUpdating) await Task.Delay(10);
-                    StartNextPackageInstall();
+                    if (!_request.IsCompleted)
+                        return;
+
+                    if (_request.Status == StatusCode.Success)
+                        Debug.Log($"Installed {_request.Result.packageId}");
+                    else
+                        Debug.LogError($"Failed to install package: {_request.Error.message}");
+
+                    _request = null;
                 }
+
+                if (_packagesToInstall.Count > 0)
+                {
+                    string package = _packagesToInstall.Dequeue();
+                    SaveQueue();
+
+                    Debug.Log($"Installing package: {package}");
+                    _request = Client.Add(package);
+                }
+                else
+                {
+                    EditorApplication.update -= OnEditorUpdate;
+                    ClearQueue();
+                    Debug.Log("All packages installed.");
+                }
+            }
+
+            private static void SaveQueue()
+            {
+                string joined = string.Join("|", _packagesToInstall);
+                EditorPrefs.SetString(QueueKey, joined);
+            }
+
+            private static Queue<string> LoadQueue()
+            {
+                string saved = EditorPrefs.GetString(QueueKey, "");
+                if (string.IsNullOrEmpty(saved))
+                    return new Queue<string>();
+
+                return new Queue<string>(saved.Split('|'));
+            }
+
+            private static void ClearQueue()
+            {
+                EditorPrefs.DeleteKey(QueueKey);
             }
         }
 
